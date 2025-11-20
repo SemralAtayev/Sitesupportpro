@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Bell, User, LayoutDashboard, Ticket, Settings, Moon, Sun, Menu, X, Clock, AlertCircle, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Logo } from './Logo';
 
 interface LayoutProps {
   children: ReactNode;
@@ -94,22 +95,27 @@ export function Layout({ children }: LayoutProps) {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="h-20 flex items-center px-6 border-b border-slate-200/50 dark:border-slate-700/50">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 flex items-center justify-center">
-                <span className="text-white font-bold">S</span>
-              </div>
-              <AnimatePresence>
-                {sidebarOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                  >
-                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">SiteSupportPro</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <AnimatePresence mode="wait">
+              {sidebarOpen ? (
+                <motion.div
+                  key="logo-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Logo showText={true} size="md" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="logo-icon"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Logo showText={false} size="md" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Navigation */}
