@@ -520,7 +520,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-8">
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}
@@ -532,7 +532,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 className={`relative ${plan.popular ? 'md:-mt-8' : ''}`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white text-sm shadow-lg">
+                  <div className="absolute z-10 -top-5 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white text-sm shadow-lg">
                     Most Popular
                   </div>
                 )}
