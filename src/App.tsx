@@ -10,6 +10,7 @@ import { Login } from './components/pages/Login';
 import { Register } from './components/pages/Register';
 import { ForgotPassword } from './components/pages/ForgotPassword';
 import { LandingPage } from './components/pages/LandingPage';
+import { CreateTicket } from './pages/CreateTicket';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Set to false to show landing page
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/tickets/:id" element={<TicketDetail />} />
           <Route path="/notifications" element={<NotificationCenter />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/create-ticket" element={<CreateTicket />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Layout>

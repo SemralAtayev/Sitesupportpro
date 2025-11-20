@@ -92,11 +92,11 @@ export function TicketList() {
           </h1>
           <p className="text-slate-600 dark:text-slate-400">Manage and track all support requests</p>
         </div>
-        <Link to="/tickets/new">
+        <Link to="/create-ticket">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all"
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all cursor-pointer"
           >
             <Plus className="w-5 h-5" />
             New Ticket

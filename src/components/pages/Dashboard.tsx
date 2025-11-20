@@ -108,11 +108,11 @@ export function Dashboard() {
           </h1>
           <p className="text-slate-600 dark:text-slate-400">Here's what's happening with your tickets today.</p>
         </div>
-        <Link to="/tickets/new">
+        <Link to="/create-ticket">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all"
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all cursor-pointer"
           >
             <Plus className="w-5 h-5" />
             Create Ticket
@@ -253,11 +253,11 @@ export function Dashboard() {
             <div className="p-6">
               <h2 className="text-xl text-slate-900 dark:text-slate-100 mb-4">Quick Actions</h2>
               <div className="space-y-3">
-                <Link to="/tickets/new">
+                <Link to="/create-ticket">
                   <motion.button
                     whileHover={{ scale: 1.02, x: 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-500/10 hover:from-blue-500/20 hover:via-purple-500/20 hover:to-orange-500/20 text-left transition-all"
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-500/10 hover:from-blue-500/20 hover:via-purple-500/20 hover:to-orange-500/20 text-left transition-all cursor-pointer"
                   >
                     <Plus className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                     <span className="text-slate-900 dark:text-slate-100">Create New Ticket</span>
@@ -267,7 +267,7 @@ export function Dashboard() {
                   <motion.button
                     whileHover={{ scale: 1.02, x: 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-50/50 dark:bg-slate-800/50 hover:bg-slate-100/50 dark:hover:bg-slate-800/80 text-left transition-all"
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-50/50 dark:bg-slate-800/50 hover:bg-slate-100/50 dark:hover:bg-slate-800/80 text-left transition-all cursor-pointer"
                   >
                     <Ticket className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                     <span className="text-slate-900 dark:text-slate-100">View All Tickets</span>
