@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Zap, MessageCircle, Bell, CreditCard, Shield, Sparkles, TrendingUp, Users, BarChart, Clock, Star, Minus, Plus } from 'lucide-react';
 import { useState } from 'react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Logo } from '../Logo';
 
 interface LandingPageProps {
   onNavigate: (page: 'login' | 'register') => void;
@@ -180,12 +181,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <span className="text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">SiteSupportPro</span>
-            </div>
+            <Logo showText={true} size="lg" variant="landing" />
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center gap-8">
