@@ -141,7 +141,7 @@ export function NotificationCenter() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={markAllAsRead}
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors cursor-pointer"
           >
             <Check className="w-5 h-5" />
             Mark All as Read
@@ -169,7 +169,7 @@ export function NotificationCenter() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setFilter('unread')}
-              className={`flex-1 px-4 py-3 rounded-2xl transition-all ${
+              className={`flex-1 px-4 py-3 rounded-2xl transition-all cursor-pointer ${
                 filter === 'unread'
                   ? 'bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-500/10 text-blue-600 dark:text-blue-400'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50'
@@ -255,7 +255,7 @@ export function NotificationCenter() {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => markAsRead(notification.id)}
-                            className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors flex items-center justify-center"
+                            className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors flex items-center justify-center cursor-pointer"
                             title="Mark as read"
                           >
                             <Check className="w-4 h-4" />
@@ -265,7 +265,7 @@ export function NotificationCenter() {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => deleteNotification(notification.id)}
-                          className="w-9 h-9 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-colors flex items-center justify-center"
+                          className="w-9 h-9 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-colors flex items-center justify-center cursor-pointer"
                           title="Delete"
                         >
                           <Trash2 className="w-4 h-4" />

@@ -33,7 +33,7 @@ export function Layout({ children }: LayoutProps) {
           <div className="h-20 flex items-center px-6 border-b border-slate-200/50 dark:border-slate-700/50">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 flex items-center justify-center">
-                <span className="text-white font-bold">F</span>
+                <span className="text-white font-bold">S</span>
               </div>
               <AnimatePresence>
                 {sidebarOpen && (
@@ -42,7 +42,7 @@ export function Layout({ children }: LayoutProps) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -10 }}
                   >
-                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">FixHub</span>
+                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">SiteSupportPro</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -131,7 +131,7 @@ export function Layout({ children }: LayoutProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setDarkMode(!darkMode)}
-                className="w-11 h-11 rounded-2xl bg-slate-100/50 dark:bg-slate-800/50 flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors"
+                className="w-11 h-11 rounded-2xl bg-slate-100/50 dark:bg-slate-800/50 flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer"
               >
                 {darkMode ? <Sun className="w-5 h-5 text-orange-400" /> : <Moon className="w-5 h-5 text-slate-600" />}
               </motion.button>

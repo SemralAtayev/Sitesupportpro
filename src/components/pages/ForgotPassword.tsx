@@ -41,7 +41,7 @@ export function ForgotPassword() {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 mb-4 shadow-xl shadow-purple-500/25">
-            <span className="text-white text-2xl">F</span>
+            <span className="text-white text-2xl">S</span>
           </div>
           <h1 className="text-3xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent mb-2">
             Reset Password
@@ -98,7 +98,7 @@ export function ForgotPassword() {
                 Didn't receive the email? Check your spam folder or{' '}
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline cursor-pointer"
                 >
                   try again
                 </button>

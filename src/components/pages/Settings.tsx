@@ -39,7 +39,7 @@ export function Settings() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-2xl transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-6 py-3 rounded-2xl transition-all whitespace-nowrap cursor-pointer ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-500/10 text-blue-600 dark:text-blue-400'
                       : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50'
@@ -570,7 +570,7 @@ function BillingTab() {
               </button>
               <button
                 onClick={() => setBillingCycle('yearly')}
-                className={`px-4 py-2 rounded-lg transition-all ${billingCycle === 'yearly' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}
+                className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${billingCycle === 'yearly' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}
               >
                 Yearly
                 <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 text-xs">Save 17%</span>

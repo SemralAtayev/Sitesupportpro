@@ -64,12 +64,12 @@ export function Register({ onBackToLanding }: RegisterProps) {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 mb-4 shadow-xl shadow-purple-500/25">
-            <span className="text-white text-2xl">F</span>
+            <span className="text-white text-2xl">S</span>
           </div>
           <h1 className="text-3xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent mb-2">
             Create Your Account
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">Start your journey with FixHub today</p>
+          <p className="text-slate-600 dark:text-slate-400">Start your journey with SiteSupportPro today</p>
         </div>
 
         {/* Registration Form */}
@@ -154,7 +154,7 @@ export function Register({ onBackToLanding }: RegisterProps) {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>

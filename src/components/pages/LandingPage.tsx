@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Zap, MessageCircle, Bell, CreditCard, Shield, Sparkles, TrendingUp, Users, BarChart, Clock, Star, Minus, Plus } from 'lucide-react';
 import { useState } from 'react';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 interface LandingPageProps {
   onNavigate: (page: 'login' | 'register') => void;
@@ -125,8 +126,8 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
 
   const faqs = [
     {
-      question: 'How does FixHub work?',
-      answer: 'FixHub is a comprehensive ticket support platform that connects you with expert developers and support agents. Simply create an account, submit a ticket describing your website issue, and our team will work with you through our built-in chat system to diagnose and fix the problem. You can track all progress in your personalized dashboard.',
+      question: 'How does SiteSupportPro work?',
+      answer: 'SiteSupportPro is a comprehensive ticket support platform that connects you with expert developers and support agents. Simply create an account, submit a ticket describing your website issue, and our team will work with you through our built-in chat system to diagnose and fix the problem. You can track all progress in your personalized dashboard.',
     },
     {
       question: 'What types of issues can you help with?',
@@ -181,9 +182,9 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
-                <span className="text-white font-bold text-xl">F</span>
+                <span className="text-white font-bold text-xl">S</span>
               </div>
-              <span className="text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">FixHub</span>
+              <span className="text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">SiteSupportPro</span>
             </div>
 
             {/* Navigation */}
@@ -200,7 +201,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('login')}
-                className="px-5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                className="px-5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
               >
                 Login
               </motion.button>
@@ -208,7 +209,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('register')}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all cursor-pointer"
               >
                 Get Started
               </motion.button>
@@ -252,7 +253,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onNavigate('register')}
-                  className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white text-lg shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transition-all flex items-center justify-center gap-2 group"
+                  className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white text-lg shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transition-all flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   Start Free Trial
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -269,9 +270,26 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
               <div className="flex items-center gap-8 mt-12">
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 border-2 border-white"></div>
-                    ))}
+                    <ImageWithFallback 
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjM1ODk2ODl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                      alt="User 1"
+                      className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                    />
+                    <ImageWithFallback 
+                      src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGhlYWRzaG90fGVufDF8fHx8MTc2MzYzNDU1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                      alt="User 2"
+                      className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                    />
+                    <ImageWithFallback 
+                      src="https://images.unsplash.com/photo-1573497019236-17f8177b81e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NjM1MzYwNTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                      alt="User 3"
+                      className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                    />
+                    <ImageWithFallback 
+                      src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjM1NDkwMDV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                      alt="User 4"
+                      className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                    />
                   </div>
                   <div className="ml-2">
                     <div className="flex gap-0.5 mb-1">
@@ -594,7 +612,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onNavigate('login')}
-                  className="px-10 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white text-lg hover:bg-white/20 transition-all"
+                  className="px-10 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white text-lg hover:bg-white/20 transition-all cursor-pointer"
                 >
                   Log In
                 </motion.button>
@@ -636,7 +654,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 <div className="bg-white/80 backdrop-blur-xl border border-slate-200/50 rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden">
                   <button
                     onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left group"
+                    className="w-full px-6 py-5 flex items-center justify-between text-left group cursor-pointer"
                   >
                     <span className="text-lg text-slate-900 pr-8 group-hover:text-blue-600 transition-colors">
                       {faq.question}
@@ -687,7 +705,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all whitespace-nowrap"
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all whitespace-nowrap cursor-pointer"
               >
                 Contact Support
               </motion.button>
@@ -747,7 +765,7 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
           </div>
 
           <div className="pt-8 border-t border-slate-800 text-center text-slate-500">
-            <p>&copy; 2024 FixHub. All rights reserved.</p>
+            <p>&copy; 2024 SiteSupportPro. All rights reserved.</p>
           </div>
         </div>
       </footer>

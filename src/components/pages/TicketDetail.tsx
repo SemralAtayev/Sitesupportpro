@@ -222,7 +222,7 @@ export function TicketDetail() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowNoteForm(!showNoteForm)}
-                  className="px-4 py-2 rounded-xl bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 transition-colors text-sm"
+                  className="px-4 py-2 rounded-xl bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 transition-colors text-sm cursor-pointer"
                 >
                   Add Note
                 </motion.button>
@@ -311,7 +311,7 @@ export function TicketDetail() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => removeAttachment(index)}
-                        className="w-8 h-8 rounded-lg bg-red-500/10 text-red-600 hover:bg-red-500/20 transition-colors flex items-center justify-center"
+                        className="w-8 h-8 rounded-lg bg-red-500/10 text-red-600 hover:bg-red-500/20 transition-colors flex items-center justify-center cursor-pointer"
                       >
                         <Trash2 className="w-4 h-4" />
                       </motion.button>
@@ -513,7 +513,7 @@ export function TicketDetail() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowDeleteModal(false)}
-                  className="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                  className="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                 >
                   Cancel
                 </motion.button>

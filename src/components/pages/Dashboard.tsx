@@ -102,8 +102,9 @@ export function Dashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent mb-2">
-            Welcome back, John 👋
+          <h1 className="text-3xl mb-2">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600 bg-clip-text text-transparent">Welcome back, John</span>
+            <span className="ml-2">👋</span>
           </h1>
           <p className="text-slate-600 dark:text-slate-400">Here's what's happening with your tickets today.</p>
         </div>
