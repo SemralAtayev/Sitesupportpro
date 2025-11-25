@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { Dashboard } from './components/pages/Dashboard';
 import { TicketList } from './components/pages/TicketList';
@@ -15,6 +15,11 @@ import { CreateTicket } from './pages/CreateTicket';
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Set to false to show landing page
   const [currentPage, setCurrentPage] = useState<'landing' | 'login' | 'register'>('landing');
+
+  // Set document title
+  useEffect(() => {
+    document.title = 'SiteSupportPro - Premium Web Support & Bug Fixing';
+  }, []);
 
   const handleNavigate = (page: 'login' | 'register') => {
     setCurrentPage(page);
