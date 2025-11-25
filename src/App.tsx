@@ -22,7 +22,7 @@ export default function App() {
 
   if (!isAuthenticated) {
     return (
-      <Router>
+      <Router basename="/Sitesupportpro">
         <Routes>
           <Route path="/" element={
             currentPage === 'landing' ? (
@@ -46,7 +46,7 @@ export default function App() {
   }
 
   return (
-    <Router>
+    <Router basename="/Sitesupportpro">
       <Layout>
         <Routes>
           <Route path="/" element={<Dashboard />} />
