@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { GlassCard } from '../ui/GlassCard';
-import { User, Shield, Bell, CreditCard, Settings as SettingsIcon, Upload, Check, AlertTriangle, Globe, Clock, Mail, Phone, Building, Trash2, Eye, EyeOff, Smartphone, Monitor, Download } from 'lucide-react';
-import { motion } from 'motion/react';
+import { User, Shield, Bell, CreditCard, Settings as SettingsIcon, Upload, Check, AlertTriangle, Globe, Clock, Mail, Phone, Building, Trash2, Eye, EyeOff, Smartphone, Monitor, Download, Plus, X, Info, MoreVertical, Star, Edit3, MapPin } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { AddCardModal } from '../ui/AddCardModal';
 
 type Tab = 'profile' | 'security' | 'notifications' | 'billing' | 'account';
 
@@ -464,6 +465,13 @@ function NotificationToggle({ label, description, checked, onChange }: { label: 
 
 function BillingTab() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  const [showAddCardModal, setShowAddCardModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [openCardMenu, setOpenCardMenu] = useState<number | null>(null);
+  const [paymentMethods, setPaymentMethods] = useState([
+    { id: 1, type: 'Visa', last4: '4242', expiry: '12/25', primary: true },
+    { id: 2, type: 'Mastercard', last4: '8888', expiry: '06/26', primary: false },
+  ]);
 
   const plans = [
     {
@@ -487,19 +495,64 @@ function BillingTab() {
     },
   ];
 
-  const paymentMethods = [
-    { id: 1, type: 'Visa', last4: '4242', expiry: '12/25', primary: true },
-    { id: 2, type: 'Mastercard', last4: '8888', expiry: '06/26', primary: false },
-  ];
-
   const billingHistory = [
     { id: 1, date: 'Jan 15, 2024', description: 'Pro Plan - Monthly', amount: '$79.00', status: 'paid' },
     { id: 2, date: 'Dec 15, 2023', description: 'Pro Plan - Monthly', amount: '$79.00', status: 'paid' },
     { id: 3, date: 'Nov 15, 2023', description: 'Pro Plan - Monthly', amount: '$79.00', status: 'paid' },
   ];
 
+  const handleSetAsPrimary = (cardId: number) => {
+    setPaymentMethods(paymentMethods.map(method => ({
+      ...method,
+      primary: method.id === cardId
+    })));
+    setOpenCardMenu(null);
+  };
+
+  const handleRemoveCard = (cardId: number) => {
+    setPaymentMethods(paymentMethods.filter(method => method.id !== cardId));
+    setOpenCardMenu(null);
+  };
+
+  const handleAddCard = (newCard: any) => {
+    const id = Math.max(...paymentMethods.map(m => m.id), 0) + 1;
+    setPaymentMethods([...paymentMethods, { ...newCard, id }]);
+    setShowAddCardModal(false);
+    setShowSuccessModal(true);
+    setTimeout(() => setShowSuccessModal(false), 3000);
+  };
+
   return (
     <div className="space-y-6">
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showSuccessModal && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-50"
+          >
+            <div className="px-6 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-2xl shadow-green-500/50 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <Check className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="font-medium">Card Added Successfully</p>
+                <p className="text-sm text-white/90">Your new payment method is ready to use</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Add Card Modal */}
+      <AddCardModal 
+        isOpen={showAddCardModal}
+        onClose={() => setShowAddCardModal(false)}
+        onAddCard={handleAddCard}
+      />
+
       {/* Current Plan */}
       <GlassCard>
         <div className="p-6">
@@ -620,40 +673,114 @@ function BillingTab() {
       <GlassCard>
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl text-slate-900 dark:text-slate-100">Payment Methods</h2>
+            <div>
+              <h2 className="text-xl text-slate-900 dark:text-slate-100">Payment Methods</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Manage your payment cards for auto-renewals and invoices</p>
+            </div>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors"
+              onClick={() => setShowAddCardModal(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all"
             >
-              Add Card
+              <Plus className="w-4 h-4" />
+              Add New Card
             </motion.button>
           </div>
           <div className="space-y-3">
             {paymentMethods.map((method) => (
-              <div key={method.id} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <motion.div 
+                key={method.id} 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between group hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+              >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                    <CreditCard className="w-6 h-6 text-white" />
+                  <div className="w-14 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                    <CreditCard className="w-7 h-7 text-white relative z-10" />
                   </div>
                   <div>
-                    <p className="text-slate-900 dark:text-slate-100">{method.type} •••• {method.last4}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className="text-slate-900 dark:text-slate-100">{method.type} •••• {method.last4}</p>
+                      {method.primary && (
+                        <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs flex items-center gap-1">
+                          <Star className="w-3 h-3 fill-current" />
+                          Default
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Expires {method.expiry}</p>
                   </div>
-                  {method.primary && (
-                    <span className="px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs">Primary</span>
-                  )}
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-sm text-red-600 dark:text-red-400 hover:underline"
-                >
-                  Remove
-                </motion.button>
-              </div>
+                <div className="relative">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setOpenCardMenu(openCardMenu === method.id ? null : method.id)}
+                    className="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors"
+                  >
+                    <MoreVertical className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                  </motion.button>
+                  
+                  <AnimatePresence>
+                    {openCardMenu === method.id && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                        className="absolute right-0 top-10 w-48 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xl z-10"
+                      >
+                        {!method.primary && (
+                          <button
+                            onClick={() => handleSetAsPrimary(method.id)}
+                            className="w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2"
+                          >
+                            <Star className="w-4 h-4" />
+                            Set as Default
+                          </button>
+                        )}
+                        <button
+                          onClick={() => {
+                            setOpenCardMenu(null);
+                            setShowAddCardModal(true);
+                          }}
+                          className="w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2"
+                        >
+                          <Edit3 className="w-4 h-4" />
+                          Replace Card
+                        </button>
+                        <button
+                          onClick={() => handleRemoveCard(method.id)}
+                          className="w-full px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 flex items-center gap-2"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          Remove Card
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
             ))}
           </div>
+          
+          {paymentMethods.length === 0 && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+                <CreditCard className="w-8 h-8 text-slate-400" />
+              </div>
+              <p className="text-slate-600 dark:text-slate-400 mb-4">No payment methods added yet</p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setShowAddCardModal(true)}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 text-white shadow-lg shadow-purple-500/25"
+              >
+                Add Your First Card
+              </motion.button>
+            </div>
+          )}
         </div>
       </GlassCard>
 
